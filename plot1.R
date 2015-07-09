@@ -71,11 +71,15 @@ readData <- function(inputFile = inputFilename, listOfDaysToAnalyze = listOfDays
 
 	data <- read.csv(inputFile, sep=";", na.strings="?", header=TRUE, colClasses=inputFileColumnClasses)
 
-	# Make a new Timestamp column
+	# Make a new Timestamp column (this isn't used for this particular plot, but will be needed in future plots).
 	data <- cbind(data, strptime(paste(data$Date, data$Time, sep=";"), dateTimeFormat))
 	colnames(data)[ncol(data)] <- "Timestamp"
 
-	# Caller has to ask for some days or they get all of them
+	# Caller has to ask for some days or they get all of them.
+	# NOTE: There were no specifications given around
+	# input date formats, which makes date conversions difficult to manage. Therefore for this plot we are
+	# doing pure string matching on the dates, given that they are all digits and there are no alpha/case
+	# issues to worry about.
 	if(length(listOfDaysToAnalyze) > 0)
 	{
 		data <- data[data$Date %in% listOfDaysToAnalyze, ]
@@ -83,10 +87,16 @@ readData <- function(inputFile = inputFilename, listOfDaysToAnalyze = listOfDays
 	data
 }
 
+##
+## This function simply creates the plot with the desired parameters. It is sent to the currently active device.
+##
 createPlot <- function(inputData) {
 	hist(inputData$Global_active_power, col="red", xlab="Global Active Power (kilowatts)", main="Global Active Power")
 }
 
+##
+## The driver code to create a PNG file out of the default data set.
+##
 png(filename="plot1.png", width=xresDefault, height=yresDefault)
 createPlot(readData(fetchDataFile()))
 dev.off()
