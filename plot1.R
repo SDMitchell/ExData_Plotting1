@@ -76,11 +76,7 @@ readData <- function(inputFile = inputFilename, listOfDaysToAnalyze = listOfDays
 	colnames(data)[ncol(data)] <- "Timestamp"
 
 	# Caller has to ask for some days or they get all of them
-	if(length(listOfDaysToAnalyze) == 0)
-	{
-		data
-	}
-	else
+	if(length(listOfDaysToAnalyze) > 0)
 	{
 		data <- data[data$Date %in% listOfDaysToAnalyze, ]
 	}
