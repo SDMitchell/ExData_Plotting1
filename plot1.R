@@ -1,20 +1,20 @@
 library(tools)
 
 # Default arguments
-xresDefault = 480
-yresDefault = 480
-outputFilenameDefault = "plot1.png"
+xresDefault <- 480
+yresDefault <- 480
+outputFilenameDefault <- "plot1.png"
 listOfDaysToAnalyzeDefault <- list("1/2/2007", "2/2/2007")
 
 # Invariable input parameters
-targetFilename = "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
-dataDescription = "https://archive.ics.uci.edu/ml/datasets/Individual+household+electric+power+consumption"
-tempFilename = "household_power_consumption.zip"
-inputFilename = "household_power_consumption.txt"
+targetFilename <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+dataDescription <- "https://archive.ics.uci.edu/ml/datasets/Individual+household+electric+power+consumption"
+tempFilename <- "household_power_consumption.zip"
+inputFilename <- "household_power_consumption.txt"
 dateFormat <- "%d/%m/%Y"
 timeFormat <- "%H:%M:%S"
 dateTimeFormat <- paste(dateFormat, timeFormat, sep=";")
-inputFileColumnClasses=c("character", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric")
+inputFileColumnClasses <- c("character", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric")
 
 ##
 ## A function to fetch the input data file if it does not currently exist locally.
