@@ -91,7 +91,7 @@ readData <- function(inputFile = inputFilename, listOfDaysToAnalyze = listOfDays
 ## This function simply creates the plot with the desired parameters. It is sent to the currently active device.
 ##
 createPlot <- function(inputData) {
-	plot(y=inputData$Global_active_power, x=data$Timestamp, type="l", col="black", xlab="", ylab="Global Active Power (kilowatts)", main="")
+	plot(y=inputData$Global_active_power, x=inputData$Timestamp, type="l", col="black", xlab="", ylab="Global Active Power (kilowatts)", main="")
 }
 
 ##
