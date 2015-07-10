@@ -100,6 +100,6 @@ createPlot <- function(inputData) {
 ##
 ## The driver code to create a PNG file out of the default data set.
 ##
-png(filename=outputFilenameDefault, width=xresDefault, height=yresDefault)
+png(filename=outputFilenameDefault, width=xresDefault, height=yresDefault, type="cairo")
 createPlot(readData(fetchDataFile()))
 dev.off()
